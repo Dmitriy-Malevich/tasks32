@@ -1,0 +1,24 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: follow-semver02
+  namespace: argocd
+  annotations:
+    argocd-image-updater.argoproj.io/image-list: ghcr.io/dmitriy-malevich/gitops-cert-level-2-examples:~1
+spec:
+  project: default
+
+  source:
+    repoURL: https://github.com/Dmitriy-Malevich/tasks32.git
+    targetRevision: HEAD
+    path: ./app
+   
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default
+
+  # Sync policy
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true  
+   
