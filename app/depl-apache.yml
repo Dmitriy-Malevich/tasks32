@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: apache-deployment
+  name: apache-deployment22
   labels:
-    app: apache
+    app: apache22
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: apache
+      app: apache22
   template:
     metadata:
       labels:
-        app: apache
+        app: apache22
     spec:
       containers:
-      - name: apache
+      - name: apache22
         image: dmitriy228/apache_trainee
         ports:
         - containerPort: 80
@@ -25,11 +25,11 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: apache-services
+  name: apache-services22
 spec:
   type: NodePort
   selector:
-    app: apache
+    app: apache22
   ports:
     - port: 80
       targetPort: 80
